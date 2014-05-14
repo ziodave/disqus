@@ -299,7 +299,7 @@ function disqus_node_delete($node) {
 
   // Close/remove the thread on disqus if required.
   $action = variable_get('disqus_api_delete', DISQUS_API_NO_ACTION);
-  if ($action != DISQUS_API_NO_ACTION) {
+  if (isset($node->disqus) && $action != DISQUS_API_NO_ACTION) {
     $disqus = disqus_api();
     if ($disqus) {
       try {
