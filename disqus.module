@@ -768,11 +768,16 @@ function disqus_form_alter(&$form, $form_state, $form_id) {
         }
       }
       // Add the Disqus settings into the comment settings fieldset for users with toggle permission.
+      $disqus_status = variable_get('disqus_nodetypes_default', array());
+      $disqus_default_status = TRUE;
+
+      $disqus_default_status = !empty($disqus_status[$node->type]);
+
       $form['comment_settings']['disqus_status'] = array(
         '#type' => 'checkbox',
         '#title' => t('Disqus comments'),
         '#description' => t('Users can post comments using <a href="@disqus">Disqus</a>.', array('@disqus' => 'http://disqus.com')),
-        '#default_value' => isset($node->disqus['status']) ? $node->disqus['status'] : TRUE,
+        '#default_value' => isset($node->disqus['status']) ? $node->disqus['status'] : $disqus_default_status,
         '#access' => user_access('toggle disqus comments'),
       );
     }
