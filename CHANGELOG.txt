@@ -2,6 +2,7 @@ CHANGELOG for Disqus for Drupal 7
 
 Disqus 7.x-1.x-dev
 =================================
+- #2339153 by jenlampton: Fixed "Toggle Disqus comments" permission required to toggle core comments.
 - #2259383 by JayeshSolanki | Owen Barton: Fixed Disqus API settings hidden once you have the API library correctly installed.
 - #2243243 by rafalB: Default status per content type.
 - #2266877 by aasarava: Undefined index in disqus_node_delete error.

@@ -762,7 +762,7 @@ function disqus_form_alter(&$form, $form_state, $form_id) {
           // Ensure only core Comment administrators see Comment module settings
           $form['comment_settings']['comment']['#access'] = $form['comment_settings']['#access'];
           // But reveal parent comment settings fieldset if user has toggle permission
-          $form['comment_settings']['#access'] = user_access('toggle disqus comments');
+          $form['comment_settings']['#access'] = (user_access('toggle disqus comments') || $form['comment_settings']['#access']);
           // Add the Javascript for tab text.
           $form['comment_settings']['#attached']['js'][] = drupal_get_path('module', 'disqus') . '/disqus-node-form.js';
         }
