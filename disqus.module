@@ -989,9 +989,9 @@ function disqus_sso_disqus_settings($account = NULL) {
   $disqus['sso'] = array(
     'name' => variable_get('site_name', t('Drupal')),
     // The login window must be closed once the user logs in.
-    'url' => url('user/login', array('query' => array('destination' => 'disqus/closewindow'))),
+    'url' => url('user/login', array('query' => array('destination' => 'disqus/closewindow'), 'absolute' => TRUE)),
     // The logout link must redirect back to the original page.
-    'logout' => url('user/logout', array('query' => array('destination' => $_GET['q']))),
+    'logout' => url('user/logout', array('query' => array('destination' => $_GET['q']), 'absolute' => TRUE)),
     'width' => 800,
     'height' => 600,
   );
