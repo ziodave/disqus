@@ -4,12 +4,12 @@
 $plugin = array(
   'title'            => t('Disqus Comments'),
   'description'      => t('Display Disqus comment box in a pane'),
-  'category'         => t('Disqus'),
   // The category will appear in the panel content selection screen.
-  'required context' => new ctools_context_required(t('Node'), 'node'),
+  'category'         => t('Disqus'),
   // Tell CTools that we need the node context (comments will be bound to this node).
-  'render callback'  => 'disqus_ctools_comments_render',
+  'required context' => new ctools_context_required(t('Node'), 'node'),
   // The callback function that CTool will call to render the plugin.
+  'render callback'  => 'disqus_ctools_comments_render',
 );
 
 
@@ -30,9 +30,11 @@ function disqus_ctools_comments_render($subtype, $conf, $panel_args, $context) {
   if (isset($node->disqus) && $node->disqus['status']) {
     $block          = new stdClass();
     $block->module  = 'comments';
-    $block->content = array('disqus' => array('#type'   => 'disqus',
-                                              '#disqus' => $node->disqus
-    )
+    $block->content = array(
+      'disqus' => array(
+        '#type'   => 'disqus',
+        '#disqus' => $node->disqus
+      )
     );
     $block->delta   = $node->nid;
     return $block;
