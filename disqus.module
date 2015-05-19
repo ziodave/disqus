@@ -876,6 +876,15 @@ function disqus_views_api() {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function disqus_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
  * Implements hook_variable_info().
  */
 function disqus_variable_info($options) {
